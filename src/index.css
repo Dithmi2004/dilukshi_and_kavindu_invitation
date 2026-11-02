@@ -406,9 +406,7 @@ body {
   .closing-content { width:min(100%,500px); }
   .closing-title { max-width:390px; font-size:25px; }
   .closing-message { max-width:340px; margin-inline:auto; font-size:15px; }
-  .closing-flower { bottom:-45px; width:190px; height:210px; opacity:.7; }
-  .closing-flower-left { left:-68px; }
-  .closing-flower-right { right:-68px; }
+  .closing-flower { display:none; }
   .closing-eventline { max-width:270px; margin-inline:auto; line-height:1.6; }
 }
 
@@ -524,15 +522,15 @@ body {
 @keyframes flower-drift { 0%,100% {translate:0 0; rotate:0deg} 50% {translate:0 9px; rotate:1deg} }
 @keyframes flower-drift-reverse { 0%,100% {translate:0 0; rotate:0deg} 50% {translate:0 -8px; rotate:-1deg} }
 @media(max-width:640px) {
-  .invitation-cover::before { background-size:auto 100%; background-position:center; }
+  .invitation-cover::before { background-size:auto 100%; background-position:center; opacity:.2; }
   .cover-stage { align-items:flex-start; padding:20px 14px; }
   .invitation-card { width:100%; min-height:0; }
   .card-border-inner { inset:6px; }
   .card-content { padding:29px 19px 27px; }
-  .botanical-wash { width:clamp(260px,72vw,380px); opacity:.82; }
-  .botanical-wash-left { top:-110px; left:-135px; }
-  .botanical-wash-right { right:-135px; bottom:-110px; }
-  .ambient-leaf { opacity:.38; }
+  .botanical-wash { width:clamp(210px,54vw,285px); opacity:.52; }
+  .botanical-wash-left { top:-78px; left:-162px; }
+  .botanical-wash-right { right:-162px; bottom:-78px; }
+  .ambient-leaf { opacity:.2; }
   .bride-name { font-size:clamp(39px,10vw,54px); }
   .groom-name { font-size:clamp(38px,9.5vw,52px); }
   .partner-name span + span { margin-top:0; }
@@ -597,7 +595,8 @@ body {
 }
 @media(max-width:560px) {
   .hero-section { padding:8px; }
-  .hero-shell { gap:8px; border-radius:14px; }
+  .hero-shell { gap:8px; border-radius:14px; background:radial-gradient(ellipse at 50% 35%,rgba(20,75,56,.72),transparent 58%),linear-gradient(155deg,#0a382b,#06271f 72%,#0a3327); }
+  .hero-shell::before { inset:0; background-size:auto 100%; background-position:center; opacity:.13; -webkit-mask-image:linear-gradient(90deg,#000,transparent 30%,transparent 70%,#000); mask-image:linear-gradient(90deg,#000,transparent 30%,transparent 70%,#000); }
   .hero-copy { padding:24px 8px 8px; }
   .hero-details { grid-template-columns:1fr; width:min(100%,380px); }
   .hero-detail { min-height:64px; }
