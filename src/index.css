@@ -382,6 +382,35 @@ body {
   .rsvp-fields { grid-template-columns:1fr; max-width:360px; margin-top:18px; }
   .rsvp-send-button { grid-column:auto; }
 }
+.rsvp-botanical { object-fit:contain; mix-blend-mode:multiply; }
+.rsvp-botanical-tr { transform:scaleX(-1); }
+.rsvp-botanical-bl { transform:scaleY(-1); }
+
+/* Forest green closing note with floral corner sprays */
+.closing-section { position:relative; display:grid; min-height:280px; place-items:center; overflow:hidden; padding:28px 24px 24px; background:radial-gradient(ellipse at 50% 38%,rgba(16,65,49,.72),transparent 68%),linear-gradient(110deg,#0a3327,#06271f 55%,#082e24); color:#f1e7c9; }
+.closing-content { position:relative; z-index:1; width:min(100%,620px); text-align:center; }
+.closing-lotus { display:block; width:36px; height:25px; margin:0 auto 8px; color:#cfb878; }
+.closing-title { max-width:560px; margin:0 auto; color:#e9d7a0; font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(23px,3vw,32px); font-weight:500; line-height:1.08; text-wrap:balance; }
+.closing-message { margin:7px 0 0; color:rgba(240,229,201,.9); font-family:'Cormorant Garamond',Georgia,serif; font-size:15px; font-style:italic; line-height:1.3; }
+.closing-divider { margin-top:10px; }
+.closing-divider > span { width:55px; background:rgba(207,184,120,.74); }
+.closing-divider svg { width:31px; color:#cfb878; }
+.closing-signoff { margin:10px 0 0; color:#d6c28f; font-family:Cinzel,'Cormorant Garamond',serif; font-size:8px; letter-spacing:.22em; text-transform:uppercase; }
+.closing-signature { margin:0; color:#e4cd8e; font-family:'Pinyon Script',cursive; font-size:clamp(38px,5vw,55px); line-height:1.05; }
+.closing-eventline { margin:8px 0 0; color:rgba(231,218,183,.78); font-family:Cinzel,'Cormorant Garamond',serif; font-size:7px; letter-spacing:.16em; text-transform:uppercase; }
+.closing-flower { position:absolute; z-index:0; bottom:-92px; width:clamp(250px,25vw,390px); height:clamp(250px,25vw,390px); object-fit:contain; opacity:.9; pointer-events:none; }
+.closing-flower-left { left:-38px; }
+.closing-flower-right { right:-38px; transform:scaleX(-1); }
+@media(max-width:640px) {
+  .closing-section { min-height:320px; padding:32px 24px 34px; }
+  .closing-content { width:min(100%,500px); }
+  .closing-title { max-width:390px; font-size:25px; }
+  .closing-message { max-width:340px; margin-inline:auto; font-size:15px; }
+  .closing-flower { bottom:-45px; width:190px; height:210px; opacity:.7; }
+  .closing-flower-left { left:-68px; }
+  .closing-flower-right { right:-68px; }
+  .closing-eventline { max-width:270px; margin-inline:auto; line-height:1.6; }
+}
 
 /* Printed stationery cover */
 .invitation-cover {
