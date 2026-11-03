@@ -78,11 +78,10 @@ export const wedding: WeddingConfig = {
   { src: '/images/gallery/photo-05.jpg', alt: 'Engagement ceremony', caption: 'Engagement ceremony', aspect: 'landscape', isPlaceholder: true },
   { src: '/images/gallery/photo-06.jpg', alt: 'Golden hour', caption: 'Golden hour', aspect: 'landscape', isPlaceholder: true }],
 
-  // Place a licensed / royalty-free instrumental at public/audio/wedding-background.mp3.
-  // If the file is missing, the music control shows a disabled state.
+  // Background music stored in public/audio.
   music: {
     enabled: true,
-    src: '/audio/wedding-background.mp3',
+    src: '/audio/wedding-background.mpeg',
     title: 'Romantic instrumental',
     volume: 0.45
   },
