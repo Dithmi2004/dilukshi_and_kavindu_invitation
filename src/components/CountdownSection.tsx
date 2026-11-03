@@ -27,7 +27,7 @@ export function CountdownSection() {
         ) : (
           <>
             <h2 id="countdown-title" className="countdown-title">Counting down to our day</h2>
-            <p className="countdown-date">{wedding.event.shortDateLabel} · 8:00 AM Sri Lanka time</p>
+            <p className="countdown-date">{wedding.event.shortDateLabel} · 9:30 AM Sri Lanka time</p>
             <div role="timer" aria-live="off" className="countdown-units">
               {units.map((unit) => (
                 <div key={unit.label} className="countdown-unit">

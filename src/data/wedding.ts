@@ -22,7 +22,7 @@ export const wedding: WeddingConfig = {
   event: {
     dateLabel: 'Saturday, December 12, 2026',
     shortDateLabel: 'December 12, 2026',
-    timeLabel: '8:00 AM – 3:00 PM',
+    timeLabel: '9:30 AM – 3:00 PM',
     poruwaTimeLabel: '10:45 AM',
     startISO: '2026-12-12T08:00:00+05:30',
     endISO: '2026-12-12T15:00:00+05:30',
@@ -34,7 +34,7 @@ export const wedding: WeddingConfig = {
     mapsQuery: 'Canterbury Golf Resort, Kahathuduwa, Sri Lanka'
   },
   rsvp: {
-    whatsappNumber: '+94764991398'
+    whatsappNumber: '+94711130676'
   },
   invitation: {
     coverOpening: 'Together with their beloved families',

@@ -243,6 +243,7 @@ body {
 .rsvp-divider > span { background:rgba(169,154,115,.65); }
 .rsvp-divider svg { color:#ad9156; }
 .rsvp-description { margin:12px 0 0; color:rgba(48,75,57,.82); font-family:'Cormorant Garamond',Georgia,serif; font-size:20px; }
+.rsvp-deadline { margin:8px 0 0; color:#8a7a50; font-family:'Cormorant Garamond',Georgia,serif; font-size:17px; }
 .rsvp-open-button,.rsvp-send-button { display:inline-flex; min-height:44px; align-items:center; justify-content:center; gap:9px; margin-top:22px; padding:11px 22px; border:1px solid rgba(169,154,115,.75); border-radius:999px; background:#344d3c; color:#fff9f0; font-family:Cinzel,'Cormorant Garamond',serif; font-size:10px; letter-spacing:.14em; text-transform:uppercase; cursor:pointer; transition:background .18s ease,transform .18s ease; }
 .rsvp-open-button:hover,.rsvp-send-button:hover { transform:translateY(-1px); background:#263e32; }
 .rsvp-open-button svg { width:16px; height:16px; }
@@ -252,11 +253,16 @@ body {
 .rsvp-choice { display:inline-flex; min-height:42px; align-items:center; justify-content:center; gap:8px; padding:9px 16px; border:1px solid rgba(169,154,115,.62); border-radius:999px; background:#fffdf8; color:#344d3c; font-family:Cinzel,'Cormorant Garamond',serif; font-size:10px; letter-spacing:.09em; text-transform:uppercase; cursor:pointer; }
 .rsvp-choice svg { width:15px; height:15px; color:#a88749; }
 .rsvp-choice.is-selected { border-color:#344d3c; background:#e8eadf; box-shadow:inset 0 0 0 1px rgba(52,77,60,.16); }
-.rsvp-fields { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin-top:18px; text-align:left; }
+.rsvp-fields { display:grid; grid-template-columns:minmax(0,1fr); gap:14px; width:min(100%,530px); margin:18px auto 0; text-align:left; }
 .rsvp-fields label { display:grid; gap:6px; color:#82734c; font-family:Cinzel,'Cormorant Garamond',serif; font-size:9px; letter-spacing:.13em; text-transform:uppercase; }
-.rsvp-fields input { width:100%; min-height:43px; padding:9px 12px; border:1px solid rgba(169,154,115,.53); border-radius:3px; outline:none; background:#fffdf8; color:#304b39; font-family:'Cormorant Garamond',Georgia,serif; font-size:17px; letter-spacing:normal; text-transform:none; }
+.rsvp-fields input { display:block; box-sizing:border-box; width:100%; min-height:52px; padding:9px 12px; border:1px solid rgba(169,154,115,.53); border-radius:3px; outline:none; background:#fffdf8; color:#304b39; font-family:'Cormorant Garamond',Georgia,serif; font-size:17px; letter-spacing:normal; text-transform:none; }
 .rsvp-fields input:focus { border-color:#a88749; box-shadow:0 0 0 2px rgba(169,154,115,.17); }
-.rsvp-send-button { grid-column:1/-1; justify-self:center; margin-top:2px; }
+.rsvp-fields textarea { display:block; box-sizing:border-box; width:100%; min-height:88px; padding:10px 12px; border:1px solid rgba(169,154,115,.53); border-radius:3px; outline:none; resize:vertical; background:rgba(255,253,248,.72); color:#304b39; font-family:'Cormorant Garamond',Georgia,serif; font-size:17px; letter-spacing:normal; text-transform:none; }
+.rsvp-fields textarea:focus { border-color:#a88749; box-shadow:0 0 0 2px rgba(169,154,115,.17); }
+.rsvp-wish-field { grid-column:1; }
+.rsvp-send-button { background:#006a4e !important; border-color:#00fa9a !important; color:#fff9f0 !important; }
+.rsvp-send-button:hover { background:#00a878 !important; border-color:#00fa9a !important; }
+.rsvp-send-button { grid-column:1; justify-self:center; margin-top:2px; }
 .rsvp-notice { grid-column:1/-1; margin:0; color:#596c55; font-family:'Cormorant Garamond',Georgia,serif; font-size:16px; text-align:center; }
 @media(max-width:640px) {
   .countdown-section { min-height:350px; padding:42px 24px 50px; }
@@ -301,7 +307,7 @@ body {
 .hero-join { display:flex; align-items:center; justify-content:center; gap:14px; width:min(100%,430px); margin:3px 0 -5px; color:#344d3c; font-family:'Cormorant Garamond',Georgia,serif; font-size:30px; line-height:1; }
 .hero-join i { flex:1; height:1px; background:linear-gradient(90deg,transparent,#b69a62); }
 .hero-join i:last-child { transform:scaleX(-1); }
-.hero-groom-name { color:#344d3c; font-family:'Pinyon Script',cursive; font-size:clamp(58px,6.4vw,104px); font-weight:400; line-height:1.05; }
+.hero-groom-name { color:#344d3c; font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(58px,6.4vw,104px); font-weight:500; line-height:1.05; text-transform:uppercase; letter-spacing:.12em; }
 .hero-details { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); margin:clamp(26px,3vw,44px) auto 0; border-top:1px solid rgba(182,154,98,.38); border-bottom:1px solid rgba(182,154,98,.38); }
 .hero-detail { display:flex; min-width:0; flex-direction:column; align-items:center; gap:10px; padding:18px 12px; }
 .hero-detail + .hero-detail { border-left:1px solid rgba(182,154,98,.28); }
@@ -412,8 +418,10 @@ body {
 
 /* Printed stationery cover */
 .invitation-cover {
-  --forest: #214f50;
-  --sage: #83b99a;
+  --bottle-green: #006a4e;
+  --medium-spring-green: #00fa9a;
+  --forest: var(--bottle-green);
+  --sage: var(--medium-spring-green);
   --gold: #a99a73;
   background-color:#7f9781;
   background-image:url('/background1.jpeg');
@@ -423,6 +431,24 @@ body {
   background-blend-mode:normal;
   isolation: isolate;
 }
+
+/* Use the requested greens throughout the invitation sections. */
+:root {
+  --bottle-green: #006a4e;
+  --medium-spring-green: #00fa9a;
+}
+.countdown-section { background:radial-gradient(ellipse at 18% 25%,rgba(0,250,154,.22),transparent 36%),radial-gradient(ellipse at 84% 78%,rgba(0,45,33,.72),transparent 43%),linear-gradient(112deg,#006a4e,#00533d 54%,#003d2e); }
+.countdown-unit { background:linear-gradient(145deg,rgba(0,250,154,.22),rgba(0,106,78,.38) 55%,rgba(0,250,154,.16)); }
+.wedding-details-section { background:radial-gradient(ellipse at 18% 30%,rgba(0,250,154,.2),transparent 42%),linear-gradient(120deg,#006a4e,#004a37 68%,#003d2e); }
+.wedding-details-section .details-card { background:linear-gradient(145deg,rgba(0,106,78,.88),rgba(0,83,61,.94)); }
+.wedding-details-section .details-card dd { color:#f1ead8; }
+.venue-section { background:radial-gradient(ellipse at 18% 25%,rgba(0,250,154,.2),transparent 38%),linear-gradient(120deg,#006a4e,#004a37 68%,#003d2e); }
+.venue-card { background:linear-gradient(135deg,rgba(0,106,78,.88),rgba(0,67,50,.94)); }
+.closing-section { background:radial-gradient(ellipse at 50% 38%,rgba(0,250,154,.24),transparent 68%),linear-gradient(110deg,#006a4e,#004a37 55%,#003d2e); }
+.hero-section { background-color:#006a4e; }
+.hero-shell { background-image:radial-gradient(ellipse at 24% 42%,rgba(0,250,154,.18),transparent 54%),linear-gradient(115deg,#006a4e,#004a37 72%,#003d2e); }
+.hero-detail { background:linear-gradient(145deg,rgba(0,250,154,.24),rgba(0,106,78,.46) 58%,rgba(0,83,61,.42)); }
+.invitation-cover { --forest:#006a4e; --sage:#00fa9a; }
 .invitation-cover::before { content:""; position:fixed; z-index:0; inset:0; pointer-events:none; background:url('/background2.jpeg') center / 100% 100% no-repeat; mix-blend-mode:multiply; opacity:.54; animation:botanical-bloom 1.6s ease-out both; }
 .cover-stage {
   position: relative;
@@ -459,8 +485,8 @@ body {
 .mini-ornament svg { width:34px; fill:none; stroke:currentColor; stroke-width:1.1; }
 .partner-block { margin:0 auto; }
 .parent-names { margin:0; color:var(--forest); font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(18px,2.8vw,28px); font-weight:500; line-height:1.3; }
-.request-line { max-width:530px; margin:8px auto 0; color:#557a6d; font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(16px,2.5vw,23px); font-style:italic; line-height:1.2; text-wrap:balance; }
-.partner-name { display:flex; flex-direction:column; align-items:center; margin:5px auto 0; color:#174849; font-family:'Pinyon Script',cursive; font-weight:400; line-height:.9; text-wrap:nowrap; }
+.request-line { max-width:530px; margin:8px auto 0; color:var(--bottle-green); font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(16px,2.5vw,23px); font-style:italic; line-height:1.2; text-wrap:balance; }
+.partner-name { display:flex; flex-direction:column; align-items:center; margin:5px auto 0; color:var(--bottle-green); font-family:'Cormorant Garamond',Georgia,serif; font-weight:500; line-height:.9; text-wrap:nowrap; text-transform:uppercase; letter-spacing:.1em; font-style:normal; }
 .partner-name span + span { margin-top:-.03em; }
 .bride-name { max-width:100%; font-size:clamp(49px,7.1vw,88px); }
 .groom-name { max-width:100%; font-size:clamp(45px,6.1vw,76px); }
@@ -475,17 +501,17 @@ body {
 .open-seal { position:relative; display:flex; width:54px; height:54px; align-items:center; justify-content:center; border:2px solid var(--gold); border-radius:50%; background:var(--forest); color:#e3eee2; box-shadow:0 8px 24px -12px rgba(33,79,80,.5); outline:none; transition:transform .15s; }
 .open-seal:hover { transform:scale(1.04); }
 .open-seal:focus-visible { outline:2px solid var(--gold); outline-offset:4px; }
-.seal-inner,.seal-pulse { position:absolute; inset:5px; border:1px solid rgba(131,185,154,.7); border-radius:50%; }
+.seal-inner,.seal-pulse { position:absolute; inset:5px; border:1px solid color-mix(in srgb,var(--medium-spring-green),transparent 30%); border-radius:50%; }
 .seal-pulse { inset:0; border-color:var(--gold); }
-.seal-monogram { position:relative; margin-top:-3px; font-family:'Pinyon Script',cursive; font-size:22px; }
+.seal-monogram { position:relative; margin-top:-3px; font-family:'Cormorant Garamond',Georgia,serif; font-size:22px; font-style:normal; font-weight:500; }
 .open-caption { margin:8px 0 0; color:#827752; font-family:Cinzel,'Cormorant Garamond',serif; font-size:9px; letter-spacing:.25em; text-transform:uppercase; }
 .name-rain-overlay { position:fixed; z-index:80; inset:0; display:grid; place-items:center; overflow:hidden; background:radial-gradient(ellipse at center,rgba(35,75,66,.94),rgba(22,48,42,.97)); color:#f7f1df; }
 .rain-letter-field { position:absolute; inset:0; overflow:hidden; }
 .rain-letter { position:absolute; top:0; color:#d9c99d; font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(14px,2vw,24px); font-weight:500; text-shadow:0 0 12px rgba(209,193,145,.28); }
 .formed-names { position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; padding:24px; text-align:center; }
 .formed-heart { width:clamp(70px,12vw,118px); height:auto; margin-bottom:12px; color:#c4a66e; filter:drop-shadow(0 0 18px rgba(196,166,110,.2)); }
-.formed-names p { margin:0; color:#f8f1df; font-family:'Pinyon Script',cursive; font-size:clamp(48px,9vw,96px); line-height:1; text-shadow:0 5px 28px rgba(0,0,0,.18); }
-.formed-names p span { padding:0 .16em; color:#d0b477; font-family:'Cormorant Garamond',Georgia,serif; font-size:.38em; font-style:italic; }
+.formed-names p { margin:0; color:#f8f1df; font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(48px,9vw,96px); font-weight:500; line-height:1; letter-spacing:.1em; text-transform:uppercase; text-shadow:0 5px 28px rgba(0,0,0,.18); }
+.formed-names p span { padding:0 .16em; color:#d0b477; font-family:'Cormorant Garamond',Georgia,serif; font-size:.38em; font-style:normal; }
 .reveal-lotus { animation:lotus-arrive .9s cubic-bezier(.2,.75,.25,1) both; }
 .reveal-heading { animation:soft-rise .62s .3s ease-out both; }
 .reveal-divider { animation:divider-arrive .65s .42s ease-out both; }
@@ -581,6 +607,36 @@ body {
 .hero-cta { border-color:rgba(232,210,151,.84); background:linear-gradient(135deg,#e8d5a4,#c9a861); color:#3d422e; box-shadow:0 8px 25px rgba(207,177,105,.24); }
 .hero-cta:hover { background:#f0dfb1; box-shadow:0 11px 28px rgba(207,177,105,.32); }
 .hero-cta svg { color:#927843; }
+
+/* Final palette overrides: the invitation has later section rules, so place
+   these after them to ensure every green panel uses the requested shades. */
+.hero-section { background:#006a4e !important; }
+.hero-shell { background-image:radial-gradient(ellipse at 24% 42%,rgba(0,250,154,.24),transparent 54%),linear-gradient(115deg,#006a4e,#00513c 72%,#003d2e) !important; }
+.hero-detail { background:linear-gradient(145deg,rgba(0,250,154,.27),rgba(0,106,78,.62) 58%,rgba(0,77,57,.7)) !important; }
+.countdown-section { background:radial-gradient(ellipse at 18% 25%,rgba(0,250,154,.58),transparent 42%),radial-gradient(ellipse at 85% 82%,rgba(0,250,154,.2),transparent 40%),linear-gradient(112deg,#006a4e,#006a4e 58%,#004d39) !important; }
+.countdown-unit { background:linear-gradient(145deg,rgba(0,250,154,.46),rgba(0,106,78,.8) 55%,rgba(0,77,57,.86)) !important; }
+.wedding-details-section { background:#fff9f0 !important; color:#344d3c !important; }
+.wedding-details-section .details-card { background:rgba(255,252,246,.92) !important; }
+.venue-section { background:radial-gradient(ellipse at 20% 24%,rgba(0,250,154,.28),transparent 42%),linear-gradient(120deg,#006a4e,#006a4e 58%,#004d39) !important; }
+.venue-card { background:linear-gradient(135deg,rgba(0,250,154,.28),rgba(0,106,78,.92) 42%,rgba(0,77,57,.96)) !important; }
+.closing-section { background:linear-gradient(110deg,#006a4e,#00513c 55%,#003d2e) !important; }
+.wedding-details-section { color:#344d3c !important; }
+.wedding-details-section .details-heading h2,
+.wedding-details-section .details-date-label,
+.wedding-details-section .details-card dt { color:#8a7a50 !important; }
+.wedding-details-section .details-date,
+.wedding-details-section .details-card dd { color:#344d3c !important; }
+.closing-section { background:radial-gradient(ellipse at 50% 38%,rgba(0,250,154,.3),transparent 68%),linear-gradient(110deg,#006a4e,#00513c 55%,#003d2e) !important; color:#fff9f0 !important; }
+.closing-section .closing-title { color:#fff9f0 !important; }
+.closing-section .closing-message { color:rgba(255,249,240,.9) !important; }
+.closing-section .closing-signoff { color:#00fa9a !important; }
+.closing-section .closing-signature { color:#fff9f0 !important; }
+.closing-section .closing-eventline { color:rgba(255,249,240,.82) !important; }
+.closing-section .closing-lotus,
+.closing-section .closing-divider svg { color:#00fa9a !important; }
+.closing-section .closing-divider > span { background:rgba(0,250,154,.72) !important; }
+.name-rain-overlay { background:radial-gradient(ellipse at center,rgba(0,250,154,.2),transparent 68%),linear-gradient(135deg,#006a4e,#00513c 58%,#003d2e) !important; }
+.formed-heart { color:#00fa9a !important; filter:drop-shadow(0 0 18px rgba(0,250,154,.32)) !important; }
 @media(min-width:900px) {
   .hero-shell { grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr); gap:clamp(8px,2vw,28px); padding-inline:clamp(24px,4.2vw,72px); }
   .hero-copy { padding:clamp(25px,3vw,48px) clamp(12px,1.7vw,28px); }
