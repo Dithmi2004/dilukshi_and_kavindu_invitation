@@ -38,13 +38,13 @@ export function RsvpSection() {
         <p className="rsvp-description">Let us know if you’ll be celebrating with us.</p>
         <p className="rsvp-deadline">Please confirm your attendance on or before 30th November.</p>
         <div className="rsvp-form-area">
-          <p className="rsvp-question">Will you be attending?</p>
+          <p className="rsvp-question">Will You Join Us?</p>
           <div className="rsvp-choices">
             <button type="button" className={`rsvp-choice${attendance === 'attending' ? ' is-selected' : ''}`} aria-pressed={attendance === 'attending'} onClick={() => { setAttendance('attending'); setNotice(''); }}>
-              <CheckIcon aria-hidden="true" /> Attending
+              <CheckIcon aria-hidden="true" /> Yes, I'll Be There! 
             </button>
             <button type="button" className={`rsvp-choice${attendance === 'declining' ? ' is-selected' : ''}`} aria-pressed={attendance === 'declining'} onClick={() => { setAttendance('declining'); setNotice(''); }}>
-              <XIcon aria-hidden="true" /> Unable to attend
+              <XIcon aria-hidden="true" /> Sorry, Can't Make It 
             </button>
           </div>
           {attendance && (
