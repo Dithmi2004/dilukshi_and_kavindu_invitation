@@ -30,7 +30,7 @@ export function HeroSection({ revealed }: { revealed: boolean }) {
             <motion.span
               variants={enter}
               className="hero-bride-name"
-              style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 500, textTransform: 'none', letterSpacing: '0.04em' }}
+              style={{ fontFamily: "'Pinyon Script', cursive", fontStyle: 'normal', fontWeight: 400, textTransform: 'none', letterSpacing: '0' }}
             >
               {bride.fullName}
             </motion.span>
@@ -38,7 +38,7 @@ export function HeroSection({ revealed }: { revealed: boolean }) {
             <motion.span
               variants={enter}
               className="hero-groom-name"
-              style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 500, textTransform: 'none', letterSpacing: '0.04em' }}
+              style={{ fontFamily: "'Pinyon Script', cursive", fontStyle: 'normal', fontWeight: 400, textTransform: 'none', letterSpacing: '0' }}
             >
               {groom.fullName}
             </motion.span>
