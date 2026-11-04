@@ -19,9 +19,8 @@ function RingDivider({ className = "" }: { className?: string }) {
   );
 }
 
-const rainLetters = Array.from({ length: 48 }, (_, index) => ({
+const rainHearts = Array.from({ length: 48 }, (_, index) => ({
   id: index,
-  letter: "DILUKSHIANDKAVINDU"[index % 18],
   left: `${(index * 47 + 9) % 100}%`,
   delay: (index % 12) * 0.09,
   duration: 1.15 + (index % 5) * 0.16,
@@ -204,22 +203,23 @@ export function InvitationCover({
             aria-label={revealStage === "formed" ? "Dilukshi & Kavindu" : "Opening the invitation"}
           >
             <motion.div
-              className="rain-letter-field"
+              className="rain-heart-field"
               animate={{ opacity: revealStage === "rain" ? 1 : 0 }}
               transition={{ duration: 0.6 }}
               aria-hidden="true"
             >
-              {rainLetters.map((particle) => (
-                <motion.span
+              {rainHearts.map((particle) => (
+                <motion.svg
                   key={particle.id}
-                  className="rain-letter"
+                  className="rain-heart"
+                  viewBox="0 0 24 24"
                   style={{ left: particle.left }}
                   initial={{ y: "-12vh", opacity: 0 }}
-                  animate={{ y: "108vh", x: particle.drift, opacity: [0, 0.8, 0.7, 0] }}
+                  animate={{ y: "108vh", x: particle.drift, rotate: [0, 18, -14, 8], opacity: [0, 0.8, 0.7, 0] }}
                   transition={{ duration: particle.duration, delay: particle.delay, repeat: 1, ease: "linear" }}
                 >
-                  {particle.letter}
-                </motion.span>
+                  <path d="M12 21s-8.2-4.8-10.2-10C.2 6.8 2.4 3 6 3c2.3 0 4.2 1.3 6 3.4C13.8 4.3 15.7 3 18 3c3.6 0 5.8 3.8 4.2 8C20.2 16.2 12 21 12 21Z" fill="currentColor" />
+                </motion.svg>
               ))}
             </motion.div>
             <motion.div

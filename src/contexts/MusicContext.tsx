@@ -2,12 +2,10 @@ import React, {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useMemo,
   useRef,
-  useState } from
-'react';
-import { wedding } from '../data/wedding';
+  useState,
+} from 'react';
 
 export type MusicStatus = 'idle' | 'playing' | 'paused' | 'unavailable';
 
@@ -18,60 +16,61 @@ interface MusicContextValue {
 }
 
 const MusicContext = createContext<MusicContextValue | null>(null);
+const VIDEO_ID = 'mpgt-fCuzLI';
 
-export function MusicProvider({ children }: {children: React.ReactNode;}) {
-  const { music } = wedding;
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-  const [status, setStatus] = useState<MusicStatus>(
-    music.enabled ? 'idle' : 'unavailable'
-  );
+export function MusicProvider({ children }: { children: React.ReactNode }) {
+  const iframeRef = useRef<HTMLIFrameElement | null>(null);
+  const readyRef = useRef(false);
+  const wantsPlayRef = useRef(false);
+  const [status, setStatus] = useState<MusicStatus>('idle');
+  const embedUrl = `https://www.youtube.com/embed/${VIDEO_ID}?autoplay=0&controls=0&disablekb=1&fs=0&playsinline=1&enablejsapi=1&loop=1&playlist=${VIDEO_ID}&origin=${encodeURIComponent(window.location.origin)}`;
 
-  useEffect(() => {
-    if (!music.enabled) return;
-    const audio = new Audio();
-    audio.loop = true;
-    audio.preload = 'metadata';
-    audio.volume = music.volume;
-
-    const onError = () => setStatus('unavailable');
-    const onPlay = () => setStatus('playing');
-    const onPause = () =>
-    setStatus((s) => s === 'unavailable' ? s : 'paused');
-
-    audio.addEventListener('error', onError);
-    audio.addEventListener('play', onPlay);
-    audio.addEventListener('pause', onPause);
-    audio.src = music.src;
-    audioRef.current = audio;
-
-    return () => {
-      audio.pause();
-      audio.removeEventListener('error', onError);
-      audio.removeEventListener('play', onPlay);
-      audio.removeEventListener('pause', onPause);
-      audioRef.current = null;
-    };
-  }, [music.enabled, music.src, music.volume]);
+  const sendCommand = useCallback((func: 'playVideo' | 'pauseVideo') => {
+    iframeRef.current?.contentWindow?.postMessage(
+      JSON.stringify({ event: 'command', func, args: [] }),
+      'https://www.youtube.com',
+    );
+  }, []);
 
   const play = useCallback(() => {
-    const audio = audioRef.current;
-    if (!audio || status === 'unavailable') return;
-    // Must be called synchronously from a user gesture (autoplay policies).
-    audio.play().catch(() => {
-      setStatus((s) => s === 'unavailable' ? s : 'paused');
-    });
-  }, [status]);
+    wantsPlayRef.current = true;
+    if (readyRef.current) sendCommand('playVideo');
+    setStatus('playing');
+  }, [sendCommand]);
 
   const toggle = useCallback(() => {
-    const audio = audioRef.current;
-    if (!audio || status === 'unavailable') return;
-    if (status === 'playing') audio.pause();else
-    play();
-  }, [status, play]);
+    if (wantsPlayRef.current) {
+      wantsPlayRef.current = false;
+      sendCommand('pauseVideo');
+      setStatus('paused');
+    } else {
+      play();
+    }
+  }, [play, sendCommand]);
 
   const value = useMemo(() => ({ status, play, toggle }), [status, play, toggle]);
 
-  return <MusicContext.Provider value={value}>{children}</MusicContext.Provider>;
+  return (
+    <MusicContext.Provider value={value}>
+      {children}
+      <iframe
+        ref={iframeRef}
+        title="Wedding background music"
+        src={embedUrl}
+        width="200"
+        height="200"
+        tabIndex={-1}
+        aria-hidden="true"
+        allow="autoplay; encrypted-media"
+        onLoad={() => {
+          readyRef.current = true;
+          if (wantsPlayRef.current) sendCommand('playVideo');
+        }}
+        onError={() => setStatus('unavailable')}
+        style={{ position: 'fixed', left: '-10000px', top: 0, border: 0 }}
+      />
+    </MusicContext.Provider>
+  );
 }
 
 export function useMusic(): MusicContextValue {

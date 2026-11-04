@@ -27,9 +27,21 @@ export function HeroSection({ revealed }: { revealed: boolean }) {
           </motion.div>
           <motion.p variants={enter} className="hero-eyebrow">The Wedding Of</motion.p>
           <h1 id="hero-title" className="hero-names">
-            <motion.span variants={enter} className="hero-bride-name">{bride.fullName}</motion.span>
+            <motion.span
+              variants={enter}
+              className="hero-bride-name"
+              style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 500, textTransform: 'none', letterSpacing: '0.04em' }}
+            >
+              {bride.fullName}
+            </motion.span>
             <motion.span variants={enter} className="hero-join" aria-label="and"><i /><span>&amp;</span><i /></motion.span>
-            <motion.span variants={enter} className="hero-groom-name">{groom.fullName}</motion.span>
+            <motion.span
+              variants={enter}
+              className="hero-groom-name"
+              style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontStyle: 'italic', fontWeight: 500, textTransform: 'none', letterSpacing: '0.04em' }}
+            >
+              {groom.fullName}
+            </motion.span>
           </h1>
           <motion.div variants={enter} className="hero-details">
             <div className="hero-detail"><CalendarDays aria-hidden="true" /><p><strong>{weekday}</strong><span>{date}</span></p></div>
